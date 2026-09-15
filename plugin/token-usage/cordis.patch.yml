@@ -1,0 +1,12 @@
+# dsh-plugin-token-usage bundle patch: mount the (no-op) host half as the
+# install anchor. The client half needs no row: @deepseek-ai/dsh-client-modules
+# discovers it through this package's `dsh.client` manifest and serves
+# lib/client.js to the browser.
+#
+# Config is read by the host half and, when available in the browser, by the
+# client half. Defaults live in lib/index.js (Config schema).
+- insert:
+    - id: token-usage
+      name: 'dsh-plugin-token-usage'
+      # config:
+      #   sessionTab: true   # 是否在会话视图注册 "Token 用量" 标签页（唯一真实逐 turn 用量数据源）。false 则只保留 main 面板（将因无数据源而展示"暂无数据"）。

@@ -1,0 +1,38 @@
+{
+  "name": "dsh-plugin-token-usage",
+  "version": "0.1.0",
+  "description": "DeepSeek Harness Token usage dashboard. A dark TraeCode-style stats page (active-day heatmap, key metrics, partner/model preference, coding-hour curve). Adds a sidebar.panellist entry + a 'main' panel, and an optional conversation.view session tab (Config sessionTab) that carries the only real per-turn token usage stream DSH exposes to browser plugins.",
+  "license": "MIT",
+  "type": "module",
+  "main": "./lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js"
+  },
+  "files": [
+    "lib",
+    "cordis.patch.yml",
+    "scripts"
+  ],
+  "engines": {
+    "dsh": ">=0.1.0"
+  },
+  "scripts": {
+    "check": "node --check lib/index.js && node --check lib/client.js && node scripts/smoke.mjs"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "slots",
+        "locale"
+      ]
+    }
+  },
+  "dependencies": {
+    "@deepseek-ai/schemastery": "^3.18.0"
+  }
+}
