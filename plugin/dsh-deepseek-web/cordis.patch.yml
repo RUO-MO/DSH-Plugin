@@ -1,0 +1,16 @@
+# dsh-deepseek-web bundle patch: mount the proxy host half into any
+# composition that installs this bundle. The client half needs no row: the
+# node half of @deepseek-ai/dsh-client-modules discovers it through this
+# package's `dsh.client` manifest and serves lib/client.js to the browser.
+#
+# Config is optional; defaults live in lib/index.js (Config schema).
+# startPath: the conversation the panel opens, /a/chat/s/<share id>.
+- insert:
+    - id: deepseek-web
+      name: 'dsh-deepseek-web'
+      # config:
+      #   port: 3838              # loopback proxy port; scans upward while busy
+      #   startPath: /a/chat/s/<share-id>   # 可选：替换为你要打开的共享会话路径，默认进入站点根路径 '/'
+      #   upstream: https://chat.deepseek.com
+      #   portScan: 10            # how many ports past `port` to try
+      #   userAgent: Mozilla/5.0 ...  # UA used when the browser sends none

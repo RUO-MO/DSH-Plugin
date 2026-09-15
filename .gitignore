@@ -1,0 +1,17 @@
+# 本地参考资料：不入版本管理
+/cordis/
+/docs/
+
+# 依赖
+node_modules/
+
+# 平台/编辑器杂物
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
+.idea/
+
+# 临时与构建产物
+*.tsbuildinfo
+coverage/

@@ -1,0 +1,35 @@
+{
+  "name": "dsh-deepseek-web",
+  "version": "0.1.0",
+  "description": "DeepSeek Harness sidebar entry that embeds the web DeepSeek chat (chat.deepseek.com) through a local loopback reverse proxy, in the web UI and the desktop shell alike.",
+  "license": "MIT",
+  "type": "module",
+  "main": "./lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js"
+  },
+  "files": [
+    "lib",
+    "cordis.patch.yml",
+    "scripts"
+  ],
+  "engines": {
+    "dsh": ">=0.1.0"
+  },
+  "scripts": {
+    "check": "node --check lib/index.js && node --check lib/client.js"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": []
+    }
+  },
+  "dependencies": {
+    "@deepseek-ai/schemastery": "^3.18.0"
+  }
+}
